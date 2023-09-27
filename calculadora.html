@@ -1,0 +1,83 @@
+ 
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Idade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #calculator {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #result {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        @media screen and (max-width: 480px) {
+            
+            #calculator {
+                max-width: 100%;
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Idade</h1>
+    <div id="calculator">
+        <label for="birthdate">Insira sua data de nascimento:</label>
+        <input type="date" id="birthdate" required>
+        <button id="calculateAge">Calcular Idade</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        document.getElementById('calculateAge').addEventListener('click', function() {
+            const birthdate = new Date(document.getElementById('birthdate').value);
+            const currentDate = new Date();
+            const ageInMilliseconds = currentDate - birthdate;
+            const ageInYears = Math.floor(ageInMilliseconds / (365.25 * 24 * 60 * 60 * 1000));
+            document.getElementById('result').textContent = `Sua idade é ${ageInYears} anos.`;
+        });
+    </script>
+</body>
+</html>
